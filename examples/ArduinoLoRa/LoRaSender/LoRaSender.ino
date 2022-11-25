@@ -15,6 +15,11 @@ void setup()
         Serial.println("Starting LoRa failed!");
         while (1);
     }
+    LoRa.setTxPower(13);             // TX Power: 13dBm, 20mW, ARIB STD-T108
+    LoRa.setSignalBandwidth(125E3);  // Signal Bandwidth: defaults to 125E3
+    LoRa.setSpreadingFactor(10);     // Spreading Factor: defaults to 7, 6 to 12
+    LoRa.setCodingRate4(5);          // Coding Rate: defaults to 5, 5 to 8
+    LoRa.enableCrc();
 }
 
 void loop()
