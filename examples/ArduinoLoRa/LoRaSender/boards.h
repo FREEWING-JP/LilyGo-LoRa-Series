@@ -198,6 +198,15 @@ void initBoard()
 #endif
 
 
+#ifdef BOARD_SW
+#if BOARD_SW < 34
+    pinMode(BOARD_SW, INPUT_PULLUP);
+#else
+    pinMode(BOARD_SW, INPUT);
+#endif
+#endif
+
+
 }
 
 

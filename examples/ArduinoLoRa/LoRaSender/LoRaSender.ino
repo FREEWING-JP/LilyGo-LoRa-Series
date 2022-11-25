@@ -24,23 +24,71 @@ void setup()
 
 void loop()
 {
+#ifdef __disable__BOARD_LED
+    digitalWrite(BOARD_LED, LED_ON);
+    delay(500);
+
+    digitalWrite(BOARD_LED, LED_OFF);
+    delay(500);
+
+    return;
+#endif
+
+#ifdef BOARD_SW
+    // Mailbox detect Switch
+    if (digitalRead(BOARD_SW) == SW_ON) {
+        digitalWrite(BOARD_LED, LED_ON);
+    } else {
+        digitalWrite(BOARD_LED, LED_OFF);
+        return;
+    }
+#endif
+
+#ifdef __disable__TOUCH_SW
+    touch_value_t value = touchRead(TOUCH_SW);
+    Serial.println(value);
+    bool touched = false;
+    if (TOUCH_VERSION_1) {
+      touched = (value < TOUCH_THRESH_V1);
+    } else if (TOUCH_VERSION_2) {
+      touched = (value > TOUCH_THRESH_V2);
+    }
+    if (touched) {
+        digitalWrite(BOARD_LED, LED_ON);
+    } else {
+        digitalWrite(BOARD_LED, LED_OFF);
+        return;
+    }
+#endif
+
     Serial.print("Sending packet: ");
     Serial.println(counter);
 
     // send packet
     LoRa.beginPacket();
-    LoRa.print("hello ");
+    // LoRa.print("hello ");
     LoRa.print(counter);
     LoRa.endPacket();
 
 #ifdef HAS_DISPLAY
     if (u8g2) {
+        u8g2->sleepOff();
+#ifdef BOARD_LED
+        digitalWrite(BOARD_LED, LED_ON);
+#endif
+
         char buf[256];
         u8g2->clearBuffer();
         u8g2->drawStr(0, 12, "Transmitting: OK!");
         snprintf(buf, sizeof(buf), "Sending: %d", counter);
         u8g2->drawStr(0, 30, buf);
         u8g2->sendBuffer();
+
+        delay(500);
+        u8g2->sleepOn();
+#ifdef BOARD_LED
+        digitalWrite(BOARD_LED, LED_OFF);
+#endif
     }
 #endif
     counter++;

@@ -134,6 +134,18 @@
 
 #define BOARD_LED                   25
 #define LED_ON                      HIGH
+#define LED_OFF                     LOW
+
+#define BOARD_SW                    4
+#define SW_ON                       LOW
+#define SW_OFF                      HIGH
+
+// #define TOUCH_SW                    T0 /* T0 = GPIO 4 */
+// #define TOUCH_SW                    T5 /* T5 = GPIO 12 */
+#define TOUCH_THRESH_V1             60
+#define TOUCH_THRESH_V2             999
+#define TOUCH_VERSION_1             (sizeof(uint16_t) == sizeof(touch_value_t)) /* ESP32 */
+#define TOUCH_VERSION_2             (sizeof(uint32_t) == sizeof(touch_value_t)) /* ESP32S2 ESP32S3 */
 
 #define ADC_PIN                     35
 
