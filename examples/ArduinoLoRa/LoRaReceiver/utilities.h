@@ -135,6 +135,7 @@
 
 #define BOARD_LED                   25
 #define LED_ON                      HIGH
+#define LED_OFF                     LOW
 
 #define ADC_PIN                     35
 
