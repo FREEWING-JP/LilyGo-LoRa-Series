@@ -18,6 +18,7 @@ const char* password = "WIFI_PASSWORD";
 const char* line_channel_access_token = "LINE_CHANNEL_ACCESS_TOKEN";
 const char* line_your_user_id = "LINE_YOUR_USER_ID";
 ```
+[<img src="https://img.youtube.com/vi/ezlI-HzZBA8/mqdefault.jpg" alt="LoRa IoT Mailbox Notification Sensor tutorial with LINE Messaging API" title="LoRa IoT Mailbox Notification Sensor tutorial with LINE Messaging API" width="320" height="180"> YouTube https://youtu.be/TyokrHR_S_8](https://youtu.be/ezlI-HzZBA8)  
 
 ![LoRaSender LoRa IoT Mailbox Sensor](https://raw.githubusercontent.com/FREEWING-JP/LilyGo-LoRa-Series/japan_as923/examples/ArduinoLoRa/assets/LoRa_IoT_Mailbox_Sensor_with_LINE_Messaging_API.png)
 
